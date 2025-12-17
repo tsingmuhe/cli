@@ -1,0 +1,23 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go
+go.work
+vendor/
+*.test
+*.out
+
+# GoLand
+.idea/
+out/
+*.iws
+*.iml
+*.ipr
+
+# macOS
+.DS_Store
+._*
