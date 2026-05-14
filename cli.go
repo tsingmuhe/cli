@@ -246,16 +246,13 @@ Args:
 	bw.Flush()
 }
 
-var helpTemplate = `{{if not (len .Commands)}}{{if .Runnable}}Usage:  {{.UsageLine}}{{end}}{{if ne (len .Long) 0}}
-
-{{.Long | trim}}{{end}}{{else}}{{if ne (len .Long) 0}}{{.Long | trim}}
-
-{{end}}Usage:  {{.UsageLine}} <command> [arguments]
+var helpTemplate = `usage: {{.UsageLine | trim}}{{if ne (len .Commands) 0}}
 
 The commands are:
 {{range .Commands}}{{if or (.Runnable) .Commands}}
 	{{.Name | printf "%-11s"}} {{.Short}}{{end}}{{end}}
-{{end}}
+{{end}}{{if ne (len .Long) 0}}
+{{.Long | trim}}{{end}}
 `
 
 // tmpl executes the given template text on data, writing the result to w.
