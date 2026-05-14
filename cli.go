@@ -42,9 +42,14 @@ type Command struct {
 // LongName returns the command's long name: all the words in the usage line before a flag or argument.
 func (c *Command) LongName() string {
 	name := c.UsageLine
-	if i := strings.Index(name, " ["); i >= 0 {
+	if i := strings.IndexAny(name, "[]<>()|"); i >= 0 {
 		name = name[:i]
 	}
+
+	if i := strings.LastIndex(name, " "); i >= 0 {
+		name = name[:i]
+	}
+
 	return name
 }
 
